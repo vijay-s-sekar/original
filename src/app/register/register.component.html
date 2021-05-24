@@ -1,0 +1,121 @@
+<mat-card>
+    <mat-card-content>
+        <div class="header" >
+            <h1>Student Registration Form</h1>
+        </div>
+        <form (ngSubmit)="onRegister()" name="registerForm" [formGroup]="registerForm">
+            <div class="firstnameInput">
+                <mat-form-field class="full-width" appearance="outline">
+                    <mat-label>First Name</mat-label>
+                    <input
+                        formControlName="FirstName"
+                        matInput
+                        placeholder="Enter your First Name" required
+                        />
+                        <mat-error >
+                            Email is required
+                        </mat-error>
+                </mat-form-field>
+            </div>
+          <div class="lastnameInput">
+                <mat-form-field class="full-width" appearance="outline">
+                    <mat-label>Last Name</mat-label>
+                    <input
+                        formControlName="LastName"
+                        matInput
+                        placeholder="Enter your Last Name" required
+                        />
+                        <mat-error >
+                            Last Name required
+                        </mat-error>
+                </mat-form-field>
+            </div>
+              <div class="fathername">
+                <mat-form-field class="full-width" appearance="outline">
+                    <mat-label>Father's Name</mat-label>
+                    <input
+                        formControlName="FathersName"
+                        matInput
+                        placeholder="Enter your Fathers Name" required>
+                </mat-form-field>
+            </div>
+            <div class="date">
+                <mat-form-field class="full-width" appearance="outline">
+                    <mat-label>Date of Birth</mat-label>
+                    <input matInput [matDatepicker]="picker" formControlName="DateOfBirth" required>
+                    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                    <mat-datepicker #picker></mat-datepicker>
+                    <mat-error *ngIf="!registerForm.controls['DateOfBirth'].valid">
+                        Valid date required.
+                     </mat-error>
+                </mat-form-field>
+            </div>
+            <div class="phone">
+                <mat-form-field class="full-width" appearance="outline">
+                    <mat-label>Phone Number</mat-label>
+                    <input
+                        formControlName="Phone"
+                        matInput
+                        placeholder="Enter your  Phone Number" required>
+                </mat-form-field>
+            </div>
+            <div class="schoolname">
+                <mat-form-field class="full-width" appearance="outline">
+                    <mat-label>High School Name</mat-label>
+                    <input
+                        formControlName="Schoolname"
+                        matInput
+                        placeholder="Enter your school Name" required
+                        />
+                        <mat-error >
+                            School Name required
+                        </mat-error>
+                </mat-form-field>
+            </div>
+            <div class="address">
+                <mat-form-field class="full-width" appearance="outline">
+                    <mat-label>Permanent Address</mat-label>
+                    <input
+                        formControlName="Address"
+                        matInput
+                        placeholder="Enter your address" required
+                        />
+                        <mat-error >
+                            Address required
+                        </mat-error>
+                </mat-form-field>
+            </div>
+
+
+            <div class="emailInput">
+                <mat-form-field class="full-width" appearance="outline">
+                    <mat-label>Email</mat-label>
+                    <input
+                        formControlName="Email"
+                        matInput
+                        placeholder="Enter email address" required
+                        />
+                        <mat-error *ngIf="!registerForm.controls['Email'].valid">
+                            Email is required
+                        </mat-error>
+                </mat-form-field>
+            </div>
+          <div class="department">
+                <mat-form-field class="full-width" appearance="outline">
+                    <mat-label>Department</mat-label>  
+                              
+                    <mat-select formControlName="Dept" name="food">
+                        <mat-option *ngFor="let food of foods" [value]="food.value">
+                          {{food.viewValue}}
+                        </mat-option>
+                      </mat-select>
+                  </mat-form-field>
+            </div>
+           
+
+           
+            <button (click)="onRegister" mat-flat-button color="primary">Register</button>
+        </form>
+    </mat-card-content>
+ </mat-card>
+  
